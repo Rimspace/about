@@ -1,0 +1,92 @@
+*// .rson File Format Introduction
+*// Rim Space Object Notation
+*// Last updated: EltanceX 2022
+*// Coding requirements: utf8 le only
+
+*//  --GRAMMAR--
+*//  *//    - Code comments.
+*//         - Anything after this character will be ignored during parsing
+*//         --  e.g. " *//something "
+*//  [xxx]  - Name of a value
+*//         -- e.g. " [xxx] xxxx "
+*//  *num   - Number
+*//         --  e.g. " [xxx] 1024*num "
+*//  *undef - Undefined
+*//         --  e.g. " [xxx] *undef "
+*//         --       Equivalent to " [xxx] xxxx*undef "
+*//  *null  - Null
+*//         --  e.g. " [xxx] *null "
+*//         --       Equivalent to " [xxx] xxxx*null "
+*//  *json  - JSON
+*//         --  e.g. " [xxx] {"something":1234}*json "
+*//         -- !Not recommended!
+*//  *func  - JsFunction
+*//         --  e.g. " [xxx] console.log("hello world")*func "
+*//         -- !Not recommended!
+*//  *bool  - Bool
+*//         --  e.g. " [xxx] false*bool "
+*//         --  e.g. " [xxx] f*bool "
+*//         --  e.g. " [xxx] true*bool "
+*//         --  e.g. " [xxx] t*bool "
+*//  *:     - Assignment character (which can be omitted)
+*//         --  e.g. " [xxx] *: xxxx "
+*//         --       Equivalent to " [xxx] xxxx "
+*//  *( *)  -  Brackets can contain multiple lines
+*//         --  e.g. " [xxx] *(I
+*//                      am
+*//                      a
+*//                     text*)
+*//                    [xxxx] xxxx "
+*//  *{ *}  -  Array (Single layer)
+*//         --  e.g. "[xxx] *{ a*, b*, c*, d*}"
+*//         --  e.g. "[xxx] *{ 100*num *, f*bool *, *null *, *undef *, hello world*}"
+*//  >      - Layer identifier <I> (Spaces are not allowed)
+*//  >>      - Layer identifier <II> (Spaces are not allowed)
+*//  >>>     - Layer identifier <III> (Spaces are not allowed)
+*//  ...
+*//         --  e.g. " [aLayer]
+*//                    > [a1] 1*num
+*//                    > [a2] *null
+*//                    >> [a3_bLayer]
+*//                    >> [b1] hello world
+*//                    >> [b2] abcdef
+*//                    > [a4] t*bool
+*//         -- Error example: ">> > >>>"
+
+*// NOTE: USE        " [xxx] true*bool ",  " [xxx] 100*num "...
+*//       INSTEAD OF " [xxx] true *bool ", " [xxx] 100 *num "...
+
+
+
+*//Complete example
+[xxx]xxxx
+[json] *:
+>  [a] *: 0*num   *// something
+> [b] abcd
+>      [c]*undef
+>  [d] *:
+>>    [aa] *: 100*num
+>>    [l] *:       *null
+>  [e] *: console.log("hello")*func
+[next]      *(I
+love
+you
+!*)
+[arr] *: *{1*num*,2*null*,3*undef*,eltancex*,100*}
+
+*// The above text is equivalent to (JSON):
+{
+    "xxx" : "xxxx",
+    "json" : {
+        "a" : 0,
+        "b" : "abcd"
+        "c" : undefined,
+        "d" : {
+            "aa" : 100,
+            "l" : null
+        }
+        "e" : undefined
+    }
+    "next" : "I\nlove\nyou\n!",
+    "arr" : [ 1, null, undefined, "eltancex", "100" ]
+}
