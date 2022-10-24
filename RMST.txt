@@ -1,0 +1,35 @@
+-- .rmst File Format --
+Rimspace Minecraft Structure
+
+Big-Endian ALL
+UInt: Unsigned int
+Header: No compression
+Body: Default compression (br)
+
+                                LIST
+ID    DATA                                            INFO
+0x01: <UInt16: Length> <String: data>                 -- File Header
+0x02: <UInt32: Length> <String: JSON>                 -- File Information 
+0x03: <UInt8: Length> <String: namespace>             -- Add a block to Namespace Pool
+0x04: <Int32: X> <Int32: Y> <Int32: Z>                -- Initial position of set point (Default: 0, 0, 0)
+0x05: NONE                                            -- X++
+0x06: NONE                                            -- X--
+0x07: NONE                                            -- Y++
+0x08: NONE                                            -- Y--
+0x09: NONE                                            -- Z++
+0x0A: NONE                                            -- Z--
+0x0B: <Int16: Number>                                 -- X Change amount(+/-)
+0x0C: <Int16: Number>                                 -- Y Change amount(+/-)
+0x0D: <Int16: Number>                                 -- Z Change amount(+/-)
+0x0E: <Int32: Number>                                 -- X Change amount(+/-)
+0x0F: <Int32: Number>                                 -- Y Change amount(+/-)
+0x10: <Int32: Number>                                 -- Z Change amount(+/-)
+0x11: <UInt16: Index> <UInt8: Data>                   -- Place a square at the current position of the point. Index: Index of squares in namespace pool. Data: Block data value
+0x12: <UInt8: Index> <UInt8: Data>                    -- Place a square at the current position of the point. 
+0x13: <UInt16: Index>                                 -- Place a square at the current position of the point. Data: 0
+0x14: <UInt8: Index>                                  -- Place a square at the current position of the point. Data: 0
+0x15: <Int8: Number>                                  -- X Change amount(+/-)
+0x16: <Int8: Number>                                  -- Y Change amount(+/-)
+0x17: <Int8: Number>                                  -- Z Change amount(+/-)
+
+0xFF: NONE                                            -- End of a file
