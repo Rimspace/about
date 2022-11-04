@@ -4,17 +4,18 @@ please send an email to our official mailbox: annularwind@outlook.com
 Thank you for your support for rimspace ~
 
 v0.1.0.1 [2022.11.5]
-    1.新增agent命令，使用'agent --help'查看该命令的详细帮助
-	2.新增closechat命令，使用'closechat --help'查看该命令的详细帮助
-	3.新增listd命令，使用'listd --help'查看该命令的详细帮助
-	4.新增querytarget命令，使用'querytarget --help'查看该命令的详细帮助
-	5.新增close命令，使用'close --help'查看该命令的详细帮助
-	6.修复mcfunction在执行setblock命令时出现的错误
-	7.修复windows下控制台km命令报错的问题
-	8.修复语言文件的层级读取错误
-	9.取消import命令的--follow跟随模式选项，替换为import的follow子命令
-	10.新增插件func - rimspace.func.parseCmdPos
-	11.新增插件Player Method - Player.wexec
+    1.新增ping命令，使用'ping --help'查看该命令的详细帮助
+    2.新增agent命令，使用'agent --help'查看该命令的详细帮助
+    3.新增closechat命令，使用'closechat --help'查看该命令的详细帮助
+    4.新增listd命令，使用'listd --help'查看该命令的详细帮助
+    5.新增querytarget命令，使用'querytarget --help'查看该命令的详细帮助
+    6.新增close命令，使用'close --help'查看该命令的详细帮助
+    7.修复mcfunction在执行setblock命令时出现的错误
+    8.修复windows下控制台km命令报错的问题
+    9.修复语言文件的层级读取错误
+    10.取消import命令的--follow跟随模式选项，替换为import的follow子命令
+    11.新增插件func - rimspace.func.parseCmdPos
+    12.新增插件Player Method - Player.wexec
 v0.1.0.0 [2022.11.1] 万圣节更新
 	1.新增彩蛋:)
 	2.新增插件系统
